@@ -1,0 +1,18 @@
+{
+  "name": "confignode",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "this is socketsocket",
+  "dependencies": {
+    "express": "^4.19.2",
+    "mongoose": "^8.5.1",
+    "path": "^0.12.7",
+    "ws": "^8.18.0"
+  }
+}
