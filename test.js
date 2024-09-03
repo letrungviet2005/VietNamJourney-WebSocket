@@ -1,31 +1,33 @@
-const WSClient = require('ws');
-const https = require('https');
+const WebSocket = require('ws');
 
-// Tạo một agent để bỏ qua chứng chỉ SSL
-const agent = new https.Agent({ rejectUnauthorized: false });
+// Thay thế URL bằng địa chỉ IP và cổng của bạn
+const ws = new WebSocket('ws://103.130.213.138:8866');
 
-// Kết nối đến WebSocket server với agent
-const socketClient = new WSClient('wss://bwdjourney.id.vn:8080', { agent });
-
-// Khi kết nối được mở
-socketClient.on('open', function open() {
-  console.log('Connected to WebSocket server');
-  // Gửi tin nhắn với định dạng yêu cầu cụ thể
-  const message = { type: 'subscribe', user_online: 16 };
-  socketClient.send(JSON.stringify(message));
+// Khi kết nối WebSocket mở
+ws.on('open', () => {
+    console.log('Connected');
+    
+    // Tạo đối tượng dữ liệu
+    const message = {
+        type: 'subscribe',
+        user_online: 16
+    };
+    
+    // Gửi đối tượng dưới dạng chuỗi JSON
+    ws.send(JSON.stringify(message));
 });
 
-// Khi nhận được tin nhắn từ server
-socketClient.on('message', function incoming(data) {
-  console.log('Received:', data);
+// Xử lý các tin nhắn đến
+ws.on('message', (data) => {
+    console.log('Message from server:', data);
 });
 
-// Khi xảy ra lỗi
-socketClient.on('error', function error(err) {
-  console.error('WebSocket error:', err);
+// Xử lý khi kết nối đóng
+ws.on('close', () => {
+    console.log('Disconnected');
 });
 
-// Khi kết nối bị đóng
-socketClient.on('close', function close() {
-  console.log('WebSocket connection closed');
+// Xử lý lỗi kết nối
+ws.on('error', (error) => {
+    console.error('WebSocket Error:', error);
 });
