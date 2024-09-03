@@ -1,7 +1,7 @@
 const WebSocket = require('ws');
 
 // Thay thế URL bằng địa chỉ IP và cổng của bạn
-const ws = new WebSocket('ws://103.130.213.138:8866');
+const ws = new WebSocket('ws://103.130.213.138:8080');
 
 // Khi kết nối WebSocket mở
 ws.on('open', () => {

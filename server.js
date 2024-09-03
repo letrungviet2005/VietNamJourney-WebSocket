@@ -2,7 +2,7 @@ const WebSocket = require('ws');
 const { handleMessage, handleClientClose } = require('./handler');
 const { handleStream } = require('./streamHandler');
 
-const wss = new WebSocket.Server({ port: 8866 });
+const wss = new WebSocket.Server({ port: 8080 });
 
 wss.on('connection', (ws) => {
     console.log('Client connected');
@@ -24,4 +24,4 @@ wss.on('connection', (ws) => {
     });
 });
 
-console.log('WebSocket server is running on ws://103.130.213.138:8866');
+console.log('WebSocket server is running on ws://103.130.213.138:8080');
