@@ -2,7 +2,7 @@ const WebSocket = require('ws');
 const { handleMessage, handleClientClose } = require('./handler');
 const { handleStream } = require('./streamHandler');
 
-const wss = new WebSocket.Server({ port: 8080 });
+const wss = new WebSocket.Server({ port: 8866 });
 
 wss.on('connection', (ws) => {
     console.log('Client connected');
@@ -20,8 +20,8 @@ wss.on('connection', (ws) => {
 
     ws.on('close', () => {
         console.log('Client disconnected');
-        handleClientClose(); // Gọi hàm xử lý khi client đóng kết nối
+        handleClientClose(); 
     });
 });
 
-console.log('WebSocket server is running on ws://localhost:8080');
+console.log('WebSocket server is running on ws://103.130.213.138:8866');
