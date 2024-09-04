@@ -58,6 +58,7 @@ function handleSubscribe(ws, parsedMessage, wss) {
         userMeeting(ws, parsedMessage, wss)
     }
     ws.thread_screen = parsedMessage.thread_screen;
+    console.log("người dùng đăng ký thread_screen:", ws.thread_screen);
 }
 
 function handleScreenShare(ws, parsedMessage, wss) {
