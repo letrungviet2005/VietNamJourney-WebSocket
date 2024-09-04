@@ -1,6 +1,10 @@
+
 const https = require('https');
 const fs = require('fs');
 const WebSocket = require('ws');
+
+const { handleMessage } = require('./handler');
+const { handleStream } = require('./streamHandler');
 
 // Đọc chứng chỉ SSL và khóa riêng
 const serverOptions = {
@@ -30,11 +34,12 @@ wss.on('connection', (ws) => {
 
     ws.on('close', () => {
         console.log('Client disconnected');
-        handleClientClose(); 
     });
 });
 
-// Lắng nghe kết nối trên cổng 443 cho HTTPS
+
 server.listen(8080, () => {
     console.log('WebSocket server is running on Server');
 });
+
+

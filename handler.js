@@ -212,5 +212,4 @@ function handleClientClose() {
 
 module.exports = {
     handleMessage,
-    handleClientClose
 };
